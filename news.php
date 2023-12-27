@@ -1,0 +1,288 @@
+<?php
+//   include 'includes/loadNews.php';
+
+require 'admin/classes/news/dbh.php';
+require 'admin/classes/news/news.php';
+require 'admin/classes/news/view.php';
+
+    $newObj = new View();
+    $newsResult = $newObj->allActiveNews();
+
+    if( $newsResult == 'query failed'  )
+    {
+        echo 'operation  failed';
+        exit();
+    }
+
+
+?>
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Girl Engineer - News</title>
+
+    <link rel="stylesheet" href="css/index.css" /> 
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css"
+    />
+    <link
+      rel="shortcut icon"
+      href="public/logos/favicon.png"
+      type="image/x-icon"
+    />
+    <script defer src="js/index.js"></script>
+    <script defer src="js/menu.js"></script>
+    
+        <style>
+        body{
+            min-height: 100vh;
+        }
+        
+        .main-content{
+            padding-bottom: 6rem;
+        }
+        
+        .footer{
+            margin-top: auto;
+        }
+    </style>
+  </head>
+  <body>
+    <div class="navbar section">
+      <a href="/" class="logo">
+        <img src="public/logos/navbar-logo.png" alt="" />
+      </a>
+      <span class="links">
+        <a class="navlink" href="/">Home</a>
+        <span class="navlink dropdown-link" href="">
+          <span class="title">
+            Get involved
+            <i class="bi bi-chevron-down"></i>
+          </span>
+
+          <span class="dropdown-menu">
+            <a href="partners ">Partner With Us</a>
+            <a href="sponsors ">Sponsor Us</a>
+            <a href="be-volunteer ">Volunteer</a>
+          </span>
+        </span>
+        <a class="navlink" href="tutorials ">tutorials</a>
+        <a class="navlink" href="news ">NEWS</a>
+        <span class="navlink dropdown-link" href="">
+          <span class="title">
+            ABOUT US
+            <i class="bi bi-chevron-down"></i>
+          </span>
+
+          <span class="dropdown-menu">
+            <a href="team ">Our Team</a>
+            <a href="volunteers ">Our Volunteers</a>
+            <a href="about us ">About Us</a>
+          </span>
+        </span>
+        <a class="cta nav-cta" href="donate ">Donate</a>
+
+        <span class="mobile-menu">
+          <span class="bar"></span>
+          <span class="bar"></span>
+          <span class="bar"></span>
+        </span>
+      </span>
+
+      <span class="menu-list">
+          <span class="close-btn">
+          <i class="bi bi-x-lg"></i>
+        </span>
+        <a class="" href="/">HOME</a>
+        <span class="submenu-link" href="">
+          <span class="title">
+            Get involved
+            <i class="bi bi-chevron-down"></i>
+          </span>
+
+          <span class="sub-menu">
+            <a href="partners ">Partner With Us</a>
+            <a href="sponsors ">Sponsor Us</a>
+            <a href="be-volunteer ">Volunteer</a>
+          </span>
+        </span>
+        <a class="" href="tutorials ">tutorials</a>
+        <a class="" href="news ">NEWS</a>
+
+        <span class="submenu-link" href="">
+          <span class="title">
+            ABOUT US
+            <i class="bi bi-chevron-down"></i>
+          </span>
+
+          <span class="sub-menu">
+            <a href="team ">Our Team</a>
+            <a href="volunteers ">Our Volunteers</a>
+            <a href="about us ">About Us</a>
+          </span>
+        </span>
+      </span>
+    </div>
+
+    <div class="page-title">
+      <h1>News</h1>
+    </div>
+    <div class="main-content page-section">
+      <div class="news-container">
+       
+      
+      </div>
+
+      <div class="news-show-more cta">Show More</div>
+    </div>
+
+    <div class="footer section">
+      <div class="top">
+        <img
+          src="public/logos/footer-logo.png"
+          alt="logo"
+          class="footer-logo"
+        />
+        <div class="footer-section first-section">
+          <h2>Contact</h2>
+          <a href="mailto:info@gengineer.org" target="_blank" rel="noopener noreferrer">
+            <i class="bi bi-envelope"></i>
+            <span>info@gengineer.org</span>
+          </a>
+          <a href="tel:+265995680135" target="_blank" rel="noopener noreferrer">
+            <i class="bi bi-telephone"></i>
+            <span> +265 995 68 01 35</span>
+          </a>
+        </div>
+
+        <div class="footer-section">
+          <h2>SIGN UP FOR NEWSLETTER</h2>
+          <form class="" action="">
+            <div class="input-group">
+              <input type="email" placeholder="Your Email" />
+            </div>
+            <button class="cta">Sign Up</button>
+          </form>
+        </div>
+
+        <div class="footer-section">
+          <span class="contact-links">
+            <a href="https://www.facebook.com/girlengineer7" target="_blank" rel="noopener noreferrer">
+              <img loading="eager" src="public/icons/Facebook.png" alt="icon" />
+            </a>
+            <a href="https://www.linkedin.com/company/girl-engineer" target="_blank" rel="noopener noreferrer">
+              <img loading="eager" src="public/icons/LinkedIn.png" alt="icon" />
+            </a>
+            <a href="https://www.youtube.com/@girlengineer" target="_blank" rel="noopener noreferrer">
+              <img loading="eager" src="public/icons/YouTube.png" alt="icon" />
+            </a>
+            <a href="https://www.instagram.com/girlengineermw" target="_blank" rel="noopener noreferrer">
+              <img
+                loading="eager"
+                src="public/icons/Instagram.png"
+                alt="icon"
+              />
+            </a>
+          </span>
+          <a href="donate " class="cta footer-cta">DONATE</a>
+        </div>
+      </div>
+      <div class="bottom">
+        <span>© 2023 Girl Engineer</span> |
+        <a href="privacy policy ">Privacy Policy</a>
+        |
+        <a href="terms and conditions ">
+          Terms and Conditions
+        </a>
+      </div>
+    </div>
+    <?php
+
+        echo "
+          <script>
+                var news = [];
+                var obj ;
+          </script>
+        ";
+        for ( $i  = 0 ; $i < count($newsResult); $i ++ )
+        {
+          echo   "
+          <script>
+          
+           obj = {
+            id:   '".$newsResult[$i]['news_id']  ."',
+            title:  '".$newsResult[$i]['title']  ."'  ,
+            img:  '".$newsResult[$i]['picture']  ." ' ,
+          };    
+          
+          news.push( obj );
+          
+          </script>
+          ";
+        }
+      ?>
+
+
+    <script>
+      let newsContainer = document.querySelector(".news-container")
+
+
+      function diplayNews(){
+        news.forEach((n)=>{
+          let news = document.createElement("a");
+          news.className ="news";
+          news.id = n.id;
+          news.href = `news-active?news=${n.id}`;
+          news.innerHTML = `
+           
+              <img
+                loading="lazy"
+                src="public/images/news/`+n.img+`"
+                alt=""
+                class="news-img"
+              />
+              <span class="bottom">
+                <h2 class="news-title">
+                  `+n.title+`
+                </h2>
+                <span href="news-active?news=`+n.id+`" class="read-more">Read more</span>
+              </span>
+         
+          `
+          newsContainer.appendChild(news)
+        })
+ 
+      }
+      diplayNews();
+
+      var show = 2;
+      var childEls = newsContainer.querySelectorAll(".news");
+      const showMoreBtn = document.querySelector(".news-show-more");
+
+      function page(x) {
+        for (var i = 0; i < childEls.length; i++) {
+          if (i > x) {
+            childEls[i].style.display = "none";
+          } else {
+            childEls[i].style.display = "flex";
+          }
+        }
+
+       if(x > childEls.length){
+          showMoreBtn.style.display = "none"
+        } 
+      }
+      page(show);
+
+     
+
+      showMoreBtn.addEventListener("click", () => {
+        show = show * 2;
+        page(show);
+      });
+    </script>
+  </body>
+</html>
